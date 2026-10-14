@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10110f">
+  <meta name="description" content="TorqueCalc is a bilingual Persian-English scientific calculator with dark and light themes, keyboard controls, and a racing-inspired interface.">
+  <title>TorqueCalc — Full-throttle calculations</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="calculator.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="TorqueCalc home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="brand-name">TORQUE<span>//</span>CALC</span>
+      </a>
+      <div class="header-tools">
+        <div class="language-switch" role="group" aria-label="Language">
+          <button id="languageFa" type="button" aria-pressed="true">فا</button>
+          <button id="languageEn" type="button" aria-pressed="false">EN</button>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
+          <span class="theme-icon" id="themeIcon" aria-hidden="true">☼</span><span id="themeText">حالت روشن</span>
+        </button>
+      </div>
+      <div class="topbar-meta">
+        <span class="system-status"><i></i><span id="systemStatusText">سیستم آنلاین</span></span>
+        <span class="top-divider"></span>
+        <span class="edition" id="editionLabel">سری خیابانی <b>۰۱</b></span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-bar"></span><span id="heroEyebrow">دقت، بدون محدودیت سرعت</span></p>
+          <h1 id="heroTitle">حساب کن<br><em>با نهایت سرعت.</em></h1>
+          <p class="hero-description" id="heroDescription">ماشین‌حساب علمی با حال‌وهوای مسابقه‌ای؛ برای محاسبه‌های سریع و دقیق. بدون توقف، بدون دردسر.</p>
+        </div>
+        <div class="hero-telemetry" id="telemetryCard" aria-label="مشخصات ماشین‌حساب">
+          <div class="telemetry-top"><span id="performanceData">داده‌های عملکرد</span><span class="telemetry-live"><i></i><span id="liveLabel">زنده</span></span></div>
+          <div class="telemetry-main"><span class="telemetry-value">0.00</span><span class="telemetry-unit" id="telemetryUnit">ثانیه / محاسبه</span></div>
+          <div class="telemetry-track"><span></span></div>
+          <div class="telemetry-bottom"><span id="zeroDependencies">بدون وابستگی</span><span id="builtWeb">ساخته‌شده برای وب</span></div>
+          <div class="telemetry-orbit" aria-hidden="true"></div>
+        </div>
+        <div class="hero-index" aria-hidden="true">TC / 001</div>
+      </section>
+
+      <section class="workbench" id="calculatorRegion" aria-label="ماشین‌حساب TorqueCalc">
+        <div class="calculator-card">
+          <div class="card-topline">
+            <div class="track-label"><span class="track-light"></span><span id="statusText">آمادهٔ شروع</span></div>
+            <div class="calculator-tools">
+              <button class="tool-button" id="scientificToggle" type="button" aria-expanded="false" aria-controls="scientificPad"><span id="scientificLabel">علمی</span> <span id="scientificSign">+</span></button>
+              <button class="tool-button angle-button" id="angleToggle" type="button" aria-label="تغییر حالت زاویه">درجه</button>
+            </div>
+          </div>
+
+          <div class="display-panel" aria-live="polite">
+            <div class="display-label-row"><span id="liveEquationLabel">عبارت جاری</span><span id="displayHint">آمادهٔ ورودی</span></div>
+            <div class="expression-line" id="expression">&nbsp;</div>
+            <div class="result-line"><span class="result-caret">&gt;</span><span id="displayResult">۰</span><button id="copyButton" class="copy-button" type="button" aria-label="کپی نتیجه" title="کپی نتیجه">کپی</button></div>
+          </div>
+
+          <div class="scientific-pad" id="scientificPad" hidden>
+            <button class="key key-function" type="button" data-input="sin(">sin</button>
+            <button class="key key-function" type="button" data-input="cos(">cos</button>
+            <button class="key key-function" type="button" data-input="tan(">tan</button>
+            <button class="key key-function" type="button" data-input="sqrt(">√x</button>
+            <button class="key key-function" type="button" data-input="^">xʸ</button>
+            <button class="key key-function" type="button" data-input="log(">log</button>
+            <button class="key key-function" type="button" data-input="ln(">ln</button>
+            <button class="key key-function" type="button" data-input="π">π</button>
+            <button class="key key-function" type="button" data-input="e">e</button>
+            <button class="key key-function" type="button" data-input="(">(</button>
+            <button class="key key-function" type="button" data-input=")">)</button>
+            <button class="key key-function" type="button" data-input="!">n!</button>
+            <button class="key key-function" type="button" data-input="abs(">abs</button>
+            <button class="key key-function" type="button" data-input="%">%</button>
+            <button class="key key-function" type="button" data-action="backspace" aria-label="حذف نویسهٔ آخر">⌫</button>
+          </div>
+
+          <div class="keypad" id="keypad">
+            <button class="key key-control" id="clearButton" type="button" data-action="clear">پاک</button>
+            <button class="key key-control" type="button" data-action="sign" aria-label="تغییر علامت">±</button>
+            <button class="key key-control" type="button" data-input="%">%</button>
+            <button class="key key-operator" type="button" data-input="/" aria-label="تقسیم">÷</button>
+
+            <button class="key" type="button" data-input="7">۷</button>
+            <button class="key" type="button" data-input="8">۸</button>
+            <button class="key" type="button" data-input="9">۹</button>
+            <button class="key key-operator" type="button" data-input="*" aria-label="ضرب">×</button>
+
+            <button class="key" type="button" data-input="4">۴</button>
+            <button class="key" type="button" data-input="5">۵</button>
+            <button class="key" type="button" data-input="6">۶</button>
+            <button class="key key-operator" type="button" data-input="-" aria-label="تفریق">−</button>
+
+            <button class="key" type="button" data-input="1">۱</button>
+            <button class="key" type="button" data-input="2">۲</button>
+            <button class="key" type="button" data-input="3">۳</button>
+            <button class="key key-operator" type="button" data-input="+" aria-label="جمع">+</button>
+
+            <button class="key key-zero" type="button" data-input="0">۰</button>
+            <button class="key decimal-key" type="button" data-input=".">٫</button>
+            <button class="key key-equals" type="button" data-action="equals" aria-label="محاسبه">=</button>
+          </div>
+          <div class="card-footer"><span><kbd>ENTER</kbd> <span id="footerCalculate">محاسبه</span></span><span><kbd>ESC</kbd> <span id="footerClear">پاک‌کردن</span></span><span class="footer-right"><span id="engineLabel">موتور</span> <b>V1.0</b></span></div>
+        </div>
+
+        <aside class="pit-panel">
+          <section class="history-card">
+            <div class="section-heading"><div><p class="section-kicker" id="historyKicker">تاریخچهٔ مسیر</p><h2 id="historyHeading">محاسبه‌های اخیر</h2></div><button id="clearHistory" class="text-button" type="button">پاک‌کردن</button></div>
+            <div id="historyList" class="history-list"><p class="empty-state">هنوز محاسبه‌ای ثبت نشده.<br><span>اولین محاسبه را انجام بده.</span></p></div>
+          </section>
+          <section class="quick-guide">
+            <div class="guide-icon" aria-hidden="true">⌁</div>
+            <div><p class="section-kicker" id="pitKicker">یادداشت‌های پیت</p><h2 id="pitHeading">کنترل دست توست.</h2><p id="pitCopy">با صفحه‌کلید مستقیم وارد کن. برای توابع مثلثاتی، ریشه، لگاریتم و ثابت‌ها، <b>علمی</b> را باز کن.</p></div>
+            <div class="guide-shortcuts"><span><kbd>۰–۹</kbd> <span id="shortcutNumbers">عددها</span></span><span><kbd>⌫</kbd> <span id="shortcutUndo">بازگشت</span></span><span><kbd>D</kbd> <span id="shortcutAngles">درجه / رادیان</span></span></div>
+          </section>
+          <div class="disclaimer"><span class="stripe-mark" aria-hidden="true"></span><span id="disclaimerText">الهام‌گرفته از سرعت خیابان؛<br><b>ساخته‌شده برای دقت پیت.</b></span></div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>TORQUE//CALC <b>© 2026</b></span><span id="footerTech">HTML · CSS · JAVASCRIPT خام</span><a id="footerLicense" href="https://github.com/amiralidlb93-hash/torque-calc" target="_blank" rel="noreferrer">متن‌باز / MIT ↗</a></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
