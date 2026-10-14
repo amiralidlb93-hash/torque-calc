@@ -7,7 +7,7 @@ A bilingual Persian/English scientific calculator with dark and light themes, ke
 Live Demo | دموی زنده
 
 
-https://amiralidlb93-hash.github.io/torque-calc/
+👉 **[open live demo!](https://amiralidlb93-hash.github.io/torque-calc/)**
 
 
 Features | امکانات
